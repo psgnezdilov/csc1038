@@ -71,7 +71,7 @@ int *mergeArrays(int *array1, int *array2, int size1, int size2) {
     int i = 0;
     int j = 0;
     int k = 0;
-    for (int i = 0; j < size1 && k < size2; i++) {
+    for (; j < size1 && k < size2; i++) {
         if (*(array1 + j) > *(array2 + k)) {
             *(mergedArray + i) = *(array2 + k);
             k++;
@@ -81,21 +81,17 @@ int *mergeArrays(int *array1, int *array2, int size1, int size2) {
             j++;
         }
     }
-    if (j == size1) {
-        while (k < size2) {
-            *(mergedArray + i) = *(array2 + k);
-            i++;
-            k++;
-        }
+    while (k < size2) {
+        *(mergedArray + i) = *(array2 + k);
+        i++;
+        k++;
     }
-    else {
-        while (j < size1) {
-            *(mergedArray + i) = *(array1 + j);
-            i++;
-            j++;
+    while (j < size1) {
+        *(mergedArray + i) = *(array1 + j);
+        i++;
+        j++;
 
     }
-}
 
     return mergedArray;
 }
